@@ -1,0 +1,10 @@
+version: "3.4"
+
+services:
+  app:
+    build:
+      context: .
+      target: production
+    ports:
+      - 8080:8080
+    command: node --es-module-specifier-resolution=node build/src/server.js
