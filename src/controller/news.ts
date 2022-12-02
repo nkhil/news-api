@@ -11,12 +11,12 @@ dotenv.config()
 const env = cleanEnv(process.env, {
   NEWS_API_KEY: str(),
   NEWS_SOURCES: str(),
+  NEWS_API_ENDPOINT: str(),
 })
 
 const NEWS_API_KEY = env.NEWS_API_KEY ?? never('Missing NEWS_API_KEY environment variable')
 const NEWS_SOURCES = env.NEWS_SOURCES ?? never('Missing NEWS_SOURCES environment variable')
-
-const NEWS_API_ENDPOINT = 'https://newsapi.org/v2'
+const NEWS_API_ENDPOINT = env.NEWS_API_ENDPOINT ?? never('Missing NEWS_API_ENDPOINT environment variable')
 
 const gotExtended = got.extend({
   prefixUrl: NEWS_API_ENDPOINT,
