@@ -4,7 +4,10 @@ services:
   app:
     build:
       context: .
-      target: production
     ports:
       - 8080:8080
-    command: node --es-module-specifier-resolution=node build/src/server.js
+    command: node --es-module-specifier-resolution=node build/server.js
+    environment:
+      - NEWS_API_ENDPOINT=${NEWS_API_ENDPOINT}
+      - NEWS_API_KEY=${NEWS_API_KEY}
+      - NEWS_SOURCES=${NEWS_SOURCES}
